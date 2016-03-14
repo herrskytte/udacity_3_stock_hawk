@@ -181,8 +181,8 @@ public class StockDetailActivity extends AppCompatActivity implements LoaderMana
                 max = Math.max(max, p.getValue());
                 dataSet.addPoint(p);
             }
-            mLineChart.setAxisBorderValues((int) min,  (int) max);
             dataSet.setColor(getColor(R.color.material_blue_500));
+            mLineChart.setAxisBorderValues((int) Math.floor(min),(int) Math.ceil(max));
             mLineChart.addData(dataSet);
             mLineChart.show();
         }

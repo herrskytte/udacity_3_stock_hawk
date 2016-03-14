@@ -120,14 +120,14 @@ public class Utils {
                 if (count == 1){
                     jsonObject = jsonObject.getJSONObject("results")
                             .getJSONObject("quote");
-                    points.add(createPoint(jsonObject));
+                    points.add(createPoint(jsonObject, true));
                 } else{
                     resultsArray = jsonObject.getJSONObject("results").getJSONArray("quote");
 
                     if (resultsArray != null && resultsArray.length() != 0){
                         for (int i = 0; i < resultsArray.length(); i++){
                             jsonObject = resultsArray.getJSONObject(i);
-                            points.add(createPoint(jsonObject));
+                            points.add(createPoint(jsonObject, i % 4 == 0));
                         }
                     }
                 }
@@ -138,9 +138,9 @@ public class Utils {
         return points;
     }
 
-    public static Point createPoint(JSONObject jsonObject){
+    public static Point createPoint(JSONObject jsonObject, boolean withLabel){
         try {
-            return new Point(jsonObject.getString("Date"), (float) jsonObject.getDouble("Close"));
+            return new Point(withLabel ? jsonObject.getString("Date") : "", (float) jsonObject.getDouble("Close"));
         } catch (JSONException e){
             e.printStackTrace();
         }
