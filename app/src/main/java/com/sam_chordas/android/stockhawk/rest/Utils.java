@@ -3,6 +3,7 @@ package com.sam_chordas.android.stockhawk.rest;
 import android.content.ContentProviderOperation;
 import android.util.Log;
 
+import com.db.chart.model.Point;
 import com.sam_chordas.android.stockhawk.data.QuoteColumns;
 import com.sam_chordas.android.stockhawk.data.QuoteProvider;
 
@@ -104,5 +105,45 @@ public class Utils {
             e.printStackTrace();
         }
         return builder.build();
+    }
+
+    public static ArrayList<Point> quoteJsonToPoints(String JSON){
+        ArrayList<Point> points = new ArrayList<>();
+        JSONObject jsonObject;
+        JSONArray resultsArray;
+        Log.i(LOG_TAG, "GET HISTORY: " +JSON);
+        try{
+            jsonObject = new JSONObject(JSON);
+            if (jsonObject.length() != 0){
+                jsonObject = jsonObject.getJSONObject("query");
+                int count = Integer.parseInt(jsonObject.getString("count"));
+                if (count == 1){
+                    jsonObject = jsonObject.getJSONObject("results")
+                            .getJSONObject("quote");
+                    points.add(createPoint(jsonObject));
+                } else{
+                    resultsArray = jsonObject.getJSONObject("results").getJSONArray("quote");
+
+                    if (resultsArray != null && resultsArray.length() != 0){
+                        for (int i = 0; i < resultsArray.length(); i++){
+                            jsonObject = resultsArray.getJSONObject(i);
+                            points.add(createPoint(jsonObject));
+                        }
+                    }
+                }
+            }
+        } catch (JSONException e){
+            Log.e(LOG_TAG, "String to JSON failed: " + e);
+        }
+        return points;
+    }
+
+    public static Point createPoint(JSONObject jsonObject){
+        try {
+            return new Point(jsonObject.getString("Date"), (float) jsonObject.getDouble("Close"));
+        } catch (JSONException e){
+            e.printStackTrace();
+        }
+        return null;
     }
 }

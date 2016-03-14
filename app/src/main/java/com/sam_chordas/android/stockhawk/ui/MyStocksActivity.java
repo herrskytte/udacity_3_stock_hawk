@@ -73,7 +73,7 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
                         mCursor.moveToPosition(position);
                         if (mCursor.getInt(mCursor.getColumnIndex(QuoteColumns.HASDATA)) == 1){
                             Intent detailsIntent = new Intent(MyStocksActivity.this, StockDetailActivity.class);
-                            detailsIntent.putExtra(StockDetailActivity.STOCK_ID_EXTRA, mCursor.getColumnIndex(QuoteColumns._ID));
+                            detailsIntent.putExtra(StockDetailActivity.STOCK_ID_EXTRA, mCursor.getLong(mCursor.getColumnIndex(QuoteColumns._ID)));
                             startActivity(detailsIntent);
                         }
                         else{
