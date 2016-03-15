@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/UdacityStockHawk.iml" filepath="$PROJECT_DIR$/UdacityStockHawk.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/udacity_3_stock_hawk.iml" filepath="$PROJECT_DIR$/udacity_3_stock_hawk.iml" />
     </modules>
   </component>
 </project>

@@ -11,9 +11,9 @@
   <string name="widget_title">Today\'s Market</string>
   <string name="network_toast">Uh-oh! This app requires an internet connection</string>
   <string name="stock_exists_error">This stock is already saved!</string>
-  <string name="stock_nodata_error">This stock has no data!</string>
+  <string name="stock_nodata_error">This stock has no cursor!</string>
   <string name="stock_not_found">Stock not found</string>
-  <string name="empy_text">No stocks added, or unable to download recent stock data</string>
+  <string name="empy_text">No stocks added, or unable to download recent stock cursor</string>
     <string name="title_activity_stock_detail">Stock details</string>
   <string name="chart_title">Stock prices last 30 days</string>
 </resources>
