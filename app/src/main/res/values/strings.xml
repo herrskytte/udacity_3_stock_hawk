@@ -16,4 +16,5 @@
   <string name="empy_text">No stocks added, or unable to download recent stock cursor</string>
     <string name="title_activity_stock_detail">Stock details</string>
   <string name="chart_title">Stock prices last 30 days</string>
+  <string name="fab_desc">Tap here to add stock</string>
 </resources>
